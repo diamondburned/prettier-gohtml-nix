@@ -13,7 +13,7 @@
 		flake-utils.lib.eachDefaultSystem (system:
 			let
 				pkgs = nixpkgs.legacyPackages.${system}.extend (self: super: {
-					npmlock2nix = super.callPackage "${npmlock2nix}/internal-v2.nix" { };
+					npmlock2nix = super.callPackage "${npmlock2nix}/internal-v2.nix" { nodejs-16_x = nixpkgs.nodejs_18; };
 				});
 				packageJSON = builtins.fromJSON (builtins.readFile ./package.json);
 				prettierPlugins = packageJSON.prettier.plugins;
